@@ -1,0 +1,51 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		 h1{color: red;}
+	</style>
+	<script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+</head>
+<body>
+	<h1>您的账户余额是 <span id="amount">&&&amount&&&</span></h1>
+
+	   <button id='button'>付款</button>
+	   <script>
+
+	   	    window.jsonp = function(result){
+                if(result ==='success'){
+                	amount.innerText = amount.innerText -1;
+                }
+	   	    }
+	   	   button.addEventListener('click',(e)=>{
+
+                var script = document.createElement('script');
+
+                   script.src ='http://jack.com:8002/pay?callbackName=jsonp'
+                   document.body.appendChild(script);
+                   script.onload = function(e){
+                   	e.currentTarget.remove()
+                   }
+                   script.onerror = function(){
+                   	alert('failed');
+                   }
+
+
+
+
+
+
+	/*   	   	  var img = document.createElement('img');
+	   	   	  img.src = '/pay';
+	   	   	  img.onload = function(){
+	   	   	  	alert('success');
+	   	   	  	amount.innerText = amount.innerText -1;
+	   	   	  }
+	   	   	  img.onerror = function(){
+	   	   	  	alert('failed');
+	   	   	  }*/
+	   	   })
+	   </script>
+</body>
+</html>
